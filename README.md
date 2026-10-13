@@ -21,6 +21,31 @@ Keep media paths in the data files relative (`media/clip.mp4`, no leading slash)
 when the site is served from a repo subfolder. GitHub's servers are case-sensitive, so file names must
 match their paths exactly.
 
+### Custom domain (optional)
+The site runs at `https://techpointyt.github.io/portfolio/` by default. To move it to your own domain later:
+
+1. Buy the domain from any registrar.
+2. At the registrar, add DNS records pointing it at GitHub Pages:
+
+   | Type | Name | Value |
+   | --- | --- | --- |
+   | A | @ | 185.199.108.153 |
+   | A | @ | 185.199.109.153 |
+   | A | @ | 185.199.110.153 |
+   | A | @ | 185.199.111.153 |
+   | AAAA | @ | 2606:50c0:8000::153 |
+   | AAAA | @ | 2606:50c0:8001::153 |
+   | AAAA | @ | 2606:50c0:8002::153 |
+   | AAAA | @ | 2606:50c0:8003::153 |
+   | CNAME | www | techpointyt.github.io |
+
+3. In the repo, go to Settings → Pages → Custom domain, enter the domain, and save.
+   Once the DNS check passes (it can take up to a day), turn on **Enforce HTTPS**.
+4. Recommended: verify the domain under your GitHub account Settings → Pages, so nobody else can claim it.
+
+No code changes are needed: asset and media paths are relative. Because this repo deploys with GitHub Actions,
+the domain lives in the repo settings, and a `CNAME` file is not needed (GitHub ignores it for Actions deployments).
+
 ## Add your media
 Put these in `public/media/`:
 
