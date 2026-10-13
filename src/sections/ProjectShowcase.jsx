@@ -3,7 +3,8 @@ import LoopTile from '../components/LoopTile.jsx';
 import WalkthroughDialog from '../components/WalkthroughDialog.jsx';
 
 // The full section for each project in src/data/projects.js:
-// title and summary, a row of looping clips, the walkthrough, then the write-up.
+// title and summary, a row of looping clips, the walkthrough, the "Built with" tags,
+// then the write-up behind a "Read how I built it" toggle.
 // `status`, `full`, `story` and `stack` are optional.
 export default function ProjectShowcase({ project }) {
   const { id, title, status, summary, loops = [], full, story = [], stack = [] } = project;
@@ -44,21 +45,27 @@ export default function ProjectShowcase({ project }) {
 
       {(story.length > 0 || stack.length > 0) && (
         <div className="showcase__text">
-          {story.length > 0 && (
-            <Reveal className="showcase__story">
-              {story.map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
-            </Reveal>
-          )}
           {stack.length > 0 && (
-            <Reveal className="showcase__stack" delay={120}>
+            <Reveal className="showcase__stack">
               <h3 id={stackId}>Built with</h3>
               <ul className="tags" aria-labelledby={stackId}>
                 {stack.map((t) => (
                   <li key={t}>{t}</li>
                 ))}
               </ul>
+            </Reveal>
+          )}
+          {/* The demos lead; the write-up is there for anyone who opts in. */}
+          {story.length > 0 && (
+            <Reveal delay={120}>
+              <details className="showcase__story">
+                <summary>Read how I built it</summary>
+                <div className="showcase__story-body">
+                  {story.map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
+              </details>
             </Reveal>
           )}
         </div>

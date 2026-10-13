@@ -12,7 +12,7 @@ export const about = {
   paragraphs: [
     "I studied linguistics, found my way into software, and today I'm a developer at Capital One, building Android apps with Kotlin and Jetpack Compose.",
     "Right now I'm at a point in my career where I want to fall back in love with programming. Somewhere along the way the work became mostly about shipping, and I lost the spark of making something just to see if it could exist. I'm trying to find it again by building things.",
-    "This site is that attempt: a place for the things I think would be cool to make. Generative tools like Runway's make that feeling even bigger, and I'd love to build the interfaces that make that moment feel like magic for other people.",
+    "This site is that attempt: a place for the things I think would be cool to make. Generative tools make that feeling even bigger, and I'd love to build the interfaces that make that moment feel like magic for other people.",
     "Here are my current projects and what I've made so far.",
   ],
 };

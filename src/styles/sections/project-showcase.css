@@ -28,11 +28,9 @@
 /* ----- Walkthrough button ----- */
 .showcase__cta { justify-self: start; }
 
-/* ----- Write-up and "Built with" ----- */
+/* ----- "Built with" and the write-up toggle ----- */
 .showcase__text { max-width: var(--measure); }
-.showcase__story { color: var(--slate); }
-
-.showcase__stack { margin-top: 1rem; }
+.showcase__stack { margin-bottom: 16px; }
 .showcase__stack h3 { font-size: 1.1rem; font-weight: 600; }
 
 .tags {
@@ -49,4 +47,41 @@
   padding: 0.3rem 0.75rem;
   border: 1.5px solid var(--ink);
   border-radius: 999px;
+}
+
+/* "Read how I built it": a native <details> toggle, closed by default. */
+.showcase__story summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px; /* Material touch target */
+  font-family: var(--display);
+  font-weight: 600;
+  color: var(--crayon);
+  cursor: pointer;
+  list-style: none;
+}
+.showcase__story summary::-webkit-details-marker { display: none; }
+/* A small chevron that turns down when open. */
+.showcase__story summary::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.25s var(--ease-settle);
+}
+.showcase__story[open] summary::before { transform: rotate(45deg); }
+.showcase__story summary:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+
+.showcase__story-body { padding-top: 8px; color: var(--slate); }
+.showcase__story[open] .showcase__story-body { animation: story-in 0.4s var(--ease-settle); }
+@keyframes story-in {
+  from { opacity: 0; transform: translateY(-6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase__story summary::before { transition: none; }
+  .showcase__story[open] .showcase__story-body { animation: none; }
 }
