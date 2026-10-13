@@ -1,4 +1,5 @@
 import { hero } from '../data/site.js';
+import { useFitWidth } from '../hooks/useFitWidth.js';
 
 // Deterministic pseudo-random delays so letters settle out of sync,
 // but the same way on every load.
@@ -8,11 +9,14 @@ function letterDelay(i) {
 }
 
 export default function Hero() {
+  // The catchphrase stretches to exactly the width of the name.
+  const [nameRef, lineRef] = useFitWidth({ minPx: 17 });
+
   return (
     <header className="hero" id="top">
       <div className="hero__grain" aria-hidden="true" />
       <div className="hero__inner">
-        <h1 className="hero__name" aria-label={hero.name}>
+        <h1 ref={nameRef} className="hero__name" aria-label={hero.name}>
           {hero.name.split('').map((ch, i) => (
             <span
               key={i}
@@ -24,7 +28,7 @@ export default function Hero() {
             </span>
           ))}
         </h1>
-        <p className="hero__line">{hero.line}</p>
+        <p ref={lineRef} className="hero__line">{hero.line}</p>
       </div>
     </header>
   );

@@ -3,7 +3,8 @@
 
 export const hero = {
   name: 'David Alvarez',
-  line: "Android engineer by day. Lately, I've been building things again for the joy of seeing them come alive.",
+  // Catchphrase under the name. It's sized to run exactly the width of the name.
+  line: 'Android engineer by day, maker of things that come alive by night.',
 };
 
 export const about = {
