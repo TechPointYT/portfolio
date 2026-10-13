@@ -1,0 +1,5 @@
+/* <About>: "Why I'm here". */
+
+/* Sits close under the hero instead of a full section gap. */
+.about { padding-top: 32px; }
+.about__body { max-width: var(--measure); font-size: 1.1em; }

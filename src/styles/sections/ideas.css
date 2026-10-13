@@ -1,0 +1,93 @@
+/* <Ideas>: notes pinned in a sketchbook. */
+.ideas__intro { max-width: var(--measure); color: var(--slate); font-size: 1.1em; margin-bottom: 48px; }
+
+/* ----- Layout ----- */
+.ideas__notes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 64rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+/* Right-hand notes sit lower, so the two columns don't line up like cards. */
+.ideas__notes > li:nth-child(even) { margin-top: 64px; }
+
+/* ----- A note ----- */
+.idea {
+  position: relative;
+  padding: 32px 28px 24px;
+  background: var(--fog);
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(30, 34, 48, 0.06), 0 10px 28px -12px rgba(30, 34, 48, 0.22);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.4s var(--ease-settle), box-shadow 0.4s var(--ease-settle);
+}
+/* A strip of tape holding the note up. */
+.idea::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 72px;
+  height: 20px;
+  background: rgba(106, 79, 224, 0.2);
+  transform: translateX(-50%) rotate(calc(var(--tilt, 0deg) * -2));
+}
+.idea:hover {
+  transform: none;
+  box-shadow: 0 1px 0 rgba(30, 34, 48, 0.06), 0 16px 36px -12px rgba(30, 34, 48, 0.28);
+}
+
+.idea__title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+.idea__pitch { font-size: 1.1em; line-height: 1.45; margin-bottom: 12px; }
+.idea__detail { color: var(--slate); margin: 0; }
+
+/* ----- "More ideas loading" sign-off ----- */
+.ideas__outro {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 56px 0 0;
+  font-family: var(--display);
+  font-weight: 600;
+  color: var(--slate);
+}
+
+/* A small ring with one accent-colored arc, turning. */
+.ideas__spinner {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  border-radius: 50%;
+  border: 2px solid rgba(92, 99, 117, 0.25);
+  border-top-color: var(--crayon);
+  animation: ideas-spin 0.9s linear infinite;
+}
+
+/* Three dots that flicker on and off in turn. */
+.ideas__dots { margin-left: -10px; } /* sit right after the text */
+.ideas__dots span { animation: ideas-blink 1.4s steps(1, end) infinite; }
+.ideas__dots span:nth-child(2) { animation-delay: 0.2s; }
+.ideas__dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes ideas-spin { to { transform: rotate(360deg); } }
+@keyframes ideas-blink {
+  0%, 70% { opacity: 1; }
+  80%, 100% { opacity: 0; }
+}
+
+/* ----- Phones: one column, barely tilted ----- */
+@media (max-width: 599px) {
+  .ideas__notes { grid-template-columns: 1fr; gap: 32px; }
+  .ideas__notes > li:nth-child(even) { margin-top: 0; }
+  .idea { transform: rotate(calc(var(--tilt, 0deg) * 0.4)); padding: 28px 20px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .idea { transition: none; }
+  /* Still ring and steady dots. */
+  .ideas__spinner, .ideas__dots span { animation: none; }
+}

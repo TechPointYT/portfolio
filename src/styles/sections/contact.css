@@ -1,0 +1,68 @@
+/* <Contact>: the footer. A heading, then my name and a list of ways to reach me
+   on one quiet surface, spaced on Material's 8dp grid. */
+.contact {
+  padding: var(--section-space) var(--page-x) 32px;
+}
+
+/* ----- The surface: a Material "filled card" in the quiet --mist tone ----- */
+.contact__card {
+  max-width: 36rem;
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(221, 225, 229, 0.72); /* --mist, letting the waves through slightly */
+}
+
+.contact__name {
+  font-family: var(--display);
+  font-size: 1.5rem; /* Material headline-small */
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.33;
+  margin: 0 0 8px;
+}
+
+/* ----- One-line list items: 56dp tall, label then address ----- */
+.contact__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contact__links li {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  column-gap: 16px;
+  align-items: center;
+  min-height: 56px;
+}
+.contact__links li + li { border-top: 1px solid rgba(30, 34, 48, 0.1); }
+
+.contact__label {
+  font-family: var(--display);
+  font-size: 0.875rem; /* Material label-large */
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--slate);
+}
+.contact__links a {
+  display: inline-block;
+  justify-self: start;
+  padding-block: 12px; /* 48dp touch target */
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1rem; /* Material body-large */
+  color: #5a3fd0; /* deeper --crayon: keeps 4.5:1 contrast on the card */
+  overflow-wrap: anywhere;
+}
+
+/* ----- Phones: two-line items, label above the address ----- */
+@media (max-width: 599px) {
+  .contact { padding-bottom: 104px; } /* room above the floating nav */
+  .contact__card { padding: 16px; }
+  .contact__links li {
+    grid-template-columns: 1fr;
+    min-height: 72px; /* Material two-line list item */
+    align-content: center;
+    padding-block: 8px;
+  }
+  .contact__links a { padding-block: 4px 12px; }
+}

@@ -1,0 +1,24 @@
+/* All site styles, loaded in this order. Each file holds everything for one
+   part of the site, including its phone and reduced-motion rules.
+
+   base/        tokens and rules that apply everywhere
+   components/  reusable pieces, one file per component in src/components/
+   sections/    the parts of the page, one file per component in src/sections/ */
+
+@import './base/tokens.css';
+@import './base/global.css';
+@import './base/layout.css';
+
+@import './components/reveal.css';
+@import './components/buttons.css';
+@import './components/missing-media.css';
+@import './components/loop-tile.css';
+@import './components/walkthrough-dialog.css';
+
+@import './sections/wavy-pixels.css';
+@import './sections/nav.css';
+@import './sections/hero.css';
+@import './sections/about.css';
+@import './sections/project-showcase.css';
+@import './sections/ideas.css';
+@import './sections/contact.css';

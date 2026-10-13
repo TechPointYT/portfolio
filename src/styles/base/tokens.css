@@ -1,0 +1,28 @@
+/* Design tokens: colors, fonts, layout and easing used across the site. */
+:root {
+  --fog: #e9ecee;        /* page background: the "unrendered" state */
+  --mist: #dde1e5;       /* quiet surfaces */
+  --ink: #1e2230;        /* text */
+  --slate: #5c6375;      /* secondary text */
+  --crayon: #6a4fe0;     /* the one accent: links, buttons, focus */
+
+  --display: 'Bricolage Grotesque', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  --body: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+
+  --measure: 62ch;
+  /* Material layout: 16dp margins on compact screens, 24dp from 600dp up,
+     and content centered in a max-width body region on wide screens. */
+  --margin: 16px;
+  --content-max: 1200px;
+  --page-x: max(var(--margin), calc((100% - var(--content-max)) / 2));
+  /* Space above and below each section, 48–72px depending on screen height.
+     Two sections meet with twice this between them: about 96–144px. */
+  --section-space: clamp(48px, 6vh, 72px);
+  --ease-settle: cubic-bezier(0.2, 0.7, 0.1, 1);
+
+  color-scheme: light;
+}
+
+@media (min-width: 600px) {
+  :root { --margin: 24px; }
+}

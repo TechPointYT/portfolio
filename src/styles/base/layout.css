@@ -1,0 +1,19 @@
+/* Page column, section spacing and shared section headings. */
+main { padding-inline: var(--page-x); }
+
+section { padding-block: var(--section-space); }
+
+.section-title {
+  font-size: clamp(1.75rem, 3vw + 1rem, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+
+/* Jump targets clear the floating nav. */
+section, #work, .contact { scroll-margin-top: 88px; }
+
+@media (max-width: 599px) {
+  /* The nav sits at the bottom on phones, so nothing to clear at the top. */
+  section, #work, .contact { scroll-margin-top: 16px; }
+}

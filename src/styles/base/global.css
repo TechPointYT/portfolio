@@ -1,0 +1,42 @@
+/* Element defaults, focus ring and the skip link. */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--fog);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: clamp(1.0625rem, 0.4vw + 1rem, 1.1875rem);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; }
+p { margin: 0 0 1em; }
+a { color: var(--crayon); text-underline-offset: 0.2em; }
+img, video { max-width: 100%; display: block; }
+
+:focus-visible { outline: 2px solid var(--crayon); outline-offset: 3px; border-radius: 2px; }
+
+/* Hidden until a keyboard user presses Tab. */
+.skip-link {
+  position: fixed;
+  z-index: 20;
+  top: 16px;
+  left: 16px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--display);
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: none; }
+main:focus { outline: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

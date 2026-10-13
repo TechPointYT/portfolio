@@ -1,0 +1,30 @@
+/* Buttons. .btn is the filled accent button; modifiers below. */
+.btn {
+  font: 600 1rem var(--display);
+  color: #fff;
+  background: var(--crayon);
+  border: 0;
+  border-radius: 999px;
+  min-height: 48px; /* Material minimum touch target */
+  padding: 0 24px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn:hover { background: #5a3fd0; }
+.btn:active { transform: scale(0.97); }
+
+/* Outlined white, for dark backgrounds like the video dialog. */
+.btn--quiet { background: transparent; color: #fff; border: 1.5px solid #fff; }
+.btn--quiet:hover { background: rgba(255, 255, 255, 0.12); }
+
+/* Outlined accent; fills in when pressed (aria-pressed toggles). */
+.btn--ghost { background: transparent; color: var(--crayon); box-shadow: inset 0 0 0 1.5px var(--crayon); }
+.btn--ghost:hover { background: rgba(106, 79, 224, 0.08); }
+.btn--ghost[aria-pressed='true'] { background: var(--crayon); color: #fff; }
+
+.btn--small { font-size: 0.875rem; padding: 0 16px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+  .btn:active { transform: none; }
+}

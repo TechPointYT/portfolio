@@ -1,0 +1,14 @@
+/* <MissingMedia>: placeholder for a video that hasn't been added yet. */
+.media-missing {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  color: var(--slate);
+  background: var(--mist);
+  font-family: var(--display);
+  font-size: 0.95rem;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
